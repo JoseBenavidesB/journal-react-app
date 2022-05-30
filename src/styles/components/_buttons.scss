@@ -1,0 +1,44 @@
+
+.btn {
+    background-color: transparent;
+    border: none;
+    color: white;
+    cursor: pointer;
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
+
+    transition: color .3s ease;
+
+    &:focus {
+        border: none
+    }
+
+    &:hover {
+        color: darken($color: white, $amount: 10);
+    }
+    
+}
+
+.btn-primary {
+    background-color: $primary;
+    border-radius: 3px;
+
+    &:disabled {
+        background-color: lighten($color: $primary, $amount: 20);
+    }
+
+    &:hover {
+        background-color: darken($color: $primary, $amount: 5);
+    }
+}
+
+.google-btn {
+    border: 1px solid rgb(237, 237, 244);
+    border-radius: 5px;
+    max-width: 50%;
+    padding: 0.3rem;
+    
+    &:hover {
+        cursor: pointer;
+    }
+}
