@@ -1,9 +1,18 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { useForm } from '../../hooks/useForm'
+import { useDispatch, useSelector } from 'react-redux'
 import validator from 'validator'
+import { removeError, setError } from '../../actions/ui'
+import { startRegisterWithEmailPasswordName } from '../../actions/auth'
 
 export const RegisterScreen = () => {
+
+  const dispatch = useDispatch();
+
+  const { msgError } = useSelector( state => state.ui );
+
+  console.log(msgError);
 
   const [values, handleInputChange ] = useForm({
     name: 'joser',
@@ -12,12 +21,15 @@ export const RegisterScreen = () => {
     password2: '123456'
   });
 
+
   const {name, email, password, password2 } = values;
 
   const handleRegister = (e) => {
     e.preventDefault();
 
-    if( isFormValid() ) {
+    if( isFormValid() ) {//253
+      
+      dispatch(startRegisterWithEmailPasswordName( email, password, name))
       
     }
     
@@ -26,16 +38,18 @@ export const RegisterScreen = () => {
   const isFormValid = () => {
 
     if ( name.trim().length === 0 ) {
-      console.log('name required')
+      dispatch(setError('name required'))
       return false;
+
     } else if ( !validator.isEmail( email ) ) {
-      console.log('email not valid')
-      return false
+      dispatch(setError('email not valid'))
+      return false;
+
     } else if ( password !== password2 || password.length  < 5 ) {
-      console.log('password should be at least 6 characters and match each other')
+      dispatch(setError('Password should be at least 6 characters and Match each other'));
       return false
     }
-
+    dispatch(removeError());
     return true;
   }
 
@@ -45,9 +59,9 @@ export const RegisterScreen = () => {
         
         <form onSubmit={handleRegister}>
 
-          <div className="auth__alert-error">
-            Hello world
-          </div>
+          {
+            msgError && (<div className="auth__alert-error"> { msgError } </div>)
+          }
 
           <input 
             type="text"
