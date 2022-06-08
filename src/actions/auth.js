@@ -22,7 +22,7 @@ export const startLoginEmailPassword = (email, password) => {
                 dispatch( finishLoading());//257
             });
     }
-}
+};
 
 export const startGoogleLogin = () => {
     return (dispatch) => {
@@ -33,7 +33,7 @@ export const startGoogleLogin = () => {
                 )
             });
     }
-}
+};
 
 export const startRegisterWithEmailPasswordName = (email, password, name) => {
 
@@ -50,7 +50,7 @@ export const startRegisterWithEmailPasswordName = (email, password, name) => {
             .catch( e => { console.log(e)});
     }
 
-}
+};
 
 export const login = (uid, displayName) => ({
         type: types.loggin,
@@ -58,4 +58,17 @@ export const login = (uid, displayName) => ({
             uid,
             displayName
         }
+});
+
+export const startLogout = () => {
+    
+    return async(dispatch) => {
+        await firebase.auth().signOut();
+
+        dispatch( logout() );
+    }
+}
+
+export const logout = () => ({
+    type: types.logout
 })

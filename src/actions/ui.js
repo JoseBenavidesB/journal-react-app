@@ -14,5 +14,5 @@ export const startLoading  = () => ({
 });
 
 export const finishLoading  = () => ({
-    type: types.uiStartLoading
+    type: types.uiFinishLoading
 });
