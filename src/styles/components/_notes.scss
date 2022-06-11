@@ -3,6 +3,7 @@
     display: flex;
     flex-direction: column;
     height: 100%;
+    width: 100%;
 }
 
 .notes__appbar {
@@ -12,6 +13,13 @@
     display: flex;
     justify-content: space-between;
     padding: 0.5rem 1rem;
+    
+}
+
+@media (max-width: 480px) {
+    .notes__appbar {
+        max-width: 80%;
+    }
 }
 
 .notes__content {
@@ -47,5 +55,5 @@
 
 .notes__image img {
     box-shadow: 5px 5px $dark-gray;
-    max-width: 80%;
+    max-width: 60%;
 }

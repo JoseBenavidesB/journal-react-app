@@ -29,6 +29,12 @@
     }
 }
 
+@media (max-width: 480px) {
+    .btn-danger {
+        max-width: 85%;
+    }
+}
+
 .btn-primary {
     background-color: $primary;
     border-radius: 3px;
@@ -51,4 +57,9 @@
     &:hover {
         cursor: pointer;
     }
+}
+
+.btn-logout {
+    padding: 0;
+    margin-bottom: 0.5rem;
 }
