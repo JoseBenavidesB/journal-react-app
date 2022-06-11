@@ -1,6 +1,7 @@
-import React from 'react'
-import { useDispatch } from 'react-redux'
+import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { startLogout } from '../../actions/auth';
+import { startNewNote } from '../../actions/notes';
 import { JournalEntries } from './JournalEntries'
 
 
@@ -8,29 +9,43 @@ export const Sidebar = () => {
 
     const dispatch = useDispatch();
 
+    const { name } = useSelector( state => state.auth );
+
     const handleLogout = () =>{
         dispatch( startLogout() );
 
-    }
+    };
+
+    const handleAddNew = () => {
+        dispatch( startNewNote() );
+    };
+
   return (
     <aside className='journal__sidebar'>
-        <div className="journal__sidebar-navbar">
-            <h3 className='mt-1'>
-                <i className='far fa-moon'></i>
-                <span> Jose</span>
-            </h3>
-
-            <button className='btn mt-1' onClick={handleLogout}>
-                Logout
-            </button>
+        <div className="journal__sidebar-symbol">
+            <i class="fa-solid fa-bars"></i>
         </div>
+        <div className="journal__sidebar-notes">
+            <div className="journal__sidebar-navbar">
+                <h3 className='mt-1'>
+                    <i className='far fa-moon'></i>
+                    <span> { name } </span>
+                </h3>
 
-        <div className="journal__new-entry">
-            <i className='far fa-calendar-plus fa-5x'></i>
-            <p className='mt-1'>New entry</p>
+                <button className='btn mt-1' onClick={handleLogout}>
+                    Logout
+                </button>
+            </div>
+
+            <div 
+                onClick={ handleAddNew }
+                className="journal__new-entry">
+                <i className='far fa-calendar-plus fa-5x'></i>
+                <p className='mt-1'>New entry</p>
+            </div>
+
+            <JournalEntries />
         </div>
-
-        <JournalEntries />
     </aside>
   )
 }
