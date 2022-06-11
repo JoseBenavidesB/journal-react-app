@@ -20,12 +20,12 @@
 }
 
 .btn-danger{
-    background-color: red;
+    background-color: rgb(182, 57, 57);
 
     transition: background-color .3s ease;
 
     &:hover{
-        background-color: darken($color: red, $amount: 10);
+        background-color: darken($color: rgb(182, 57, 57), $amount: 10);
     }
 }
 
