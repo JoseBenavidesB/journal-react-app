@@ -1,5 +1,25 @@
 # A journal app
-This app can save some kind of notes about your life
+With this app you can save anything about your daily life.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Used Technologies: **React, SASS, Firebase, SweetAlert2, Moment**
+
+### GitHub Page
+https://josebenavidesb.github.io/journal-react-app/
+
+### Login Screen
+![Login Screen](./static/img/login.PNG)
+
+### Register Screen
+![Login Screen](./static/img/register.PNG)
+
+### Home Screen
+![Login Screen](./static/img/home.PNG)
+
+### Load Screen Screen
+![Login Screen](./static/img/load.PNG)
+
+### Entry Screen
+![Login Screen](./static/img/entry.PNG)
+
+### Run `npm start` to start app
 
